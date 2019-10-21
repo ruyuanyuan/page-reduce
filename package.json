@@ -1,22 +1,16 @@
 {
-  "name": "page-reduce",
+  "name": "mee-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ruyuanyuan/page-reduce.git"
-  },
-  "keywords": [],
+
+  "keywords": ["webpack","cli"],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ruyuanyuan/page-reduce/issues"
-  },
-  "homepage": "https://github.com/ruyuanyuan/page-reduce#readme",
+
   "bin": {
     "mee-cli": "index.js"
   },

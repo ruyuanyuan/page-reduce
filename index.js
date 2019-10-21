@@ -7,7 +7,7 @@ const download = require('download-git-repo')
 const handlebars = require('handlebars')
 const inquirer = require('inquirer')
 const fs =require('fs')
-const ora = require('ora')
+// const ora = require('ora')
 const chalk = require('chalk')
 const logSymbols=require('log-symbols')
 const templates={
@@ -34,16 +34,19 @@ program
       console.log(logSymbols.error,chalk.red('模板不存在'))
       return
     }
-    let spinner = ora('正在下载...').start()
+    // let spinner = ora('正在下载...').start()
+    console.log(logSymbols.info,chalk.blue('下载中。。。'))
     const {downloadUrl}=templates[templatenName]
     download(downloadUrl,projectName,{clone:true},(err)=>{
       //下载失败
       if(err){
-        spinner.fail() //下载失败
+        // spinner.fail() //下载失败
+        console.log(logSymbols.error,chalk.red('下载失败'))
         console.log(logSymbols.error,chalk.red(err))
         return
       }
-      spinner.stop()
+      console.log(logSymbols.success,chalk.green('下载成功'))
+      // spinner.stop()
       //项目下package.json文件读取出来
       //使用向导方式采集用户输入数据
       //解析数据，替换模板，重新写入
@@ -69,7 +72,7 @@ program
         const  packageContent= fs.readFileSync(packagePath,'utf8')
         const packageResult=handlebars.compile(packageContent)(answers)
         fs.writeFileSync(packagePath,packageResult)
-        // console.log(logSymbols.success,chalk.yellow('初始化模板成功'))
+        console.log(logSymbols.success,chalk.yellow('初始化模板成功'))
       });
     })
   });
